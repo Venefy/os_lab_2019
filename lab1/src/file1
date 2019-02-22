@@ -1,1 +1,7 @@
-hi, im new file
+grep cake cake_rhymes.txt > with_cake.txt
+touch 11
+rm 11 > /dev/null
+ili 
+rm 11 > /dev/null 2< /dev/null
+chmod a+x hello.sh
+./hello.sh

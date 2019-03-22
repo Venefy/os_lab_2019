@@ -5,3 +5,50 @@ ili
 rm 11 > /dev/null 2< /dev/null
 chmod a+x hello.sh
 ./hello.sh
+
+
+
+
+#!/bin/sh
+count=1
+while [ -n "$1" ]
+do
+echo "Parameter #$count = $1"
+count=$(( $count + 1 ))
+shift
+done
+
+#!/bin/sh
+od /dev/random > rand.txt 
+
+while read NUM; do
+     echo "Это строка: $NUM"
+     
+done < numbers.txt
+
+count=0
+ave=0
+while read NUM; do
+     echo "Это цифра: $NUM"
+     let "count += 1"
+     ave=$[ $ave + $NUM ]
+#     count=$[ $count + 1 ]
+done < numbers.txt
+echo "Всего: $count "
+echo "Cреднее: $[$ave /$count] | bc -l  "
+
+#!/bin/bash
+for (( a = 1; a <= 150; a++ ))
+do
+od -vAn -N1 -tu4 < /dev/random 
+done > numbers.txt
+
+#!/bin/bash
+count=0
+ave=0
+while read NUM; do
+     ave=$[ $ave + $NUM ]
+     count=$[ $count + 1 ]
+done < <(tr -d '\r' < numbers.txt)
+echo "Всего: $count "
+echo "Cреднее: $[$ave /$count]"

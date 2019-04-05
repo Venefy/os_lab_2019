@@ -1,0 +1,47 @@
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/swap$ cc -c main.c
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/swap$ cc -c swap.c
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/swap$ cc main.c swap.c -o main1
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/swap$ ./main1
+
+
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ cc -c revert_string.c
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ cc -c main.c
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ cc main.c revert_string.c -o main1
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ ./main1 aaannn
+Reverted: nnnaaa
+
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ ar rcs li/librev.a revert_strin
+g.o
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ gcc main.o -Lli -lrev -o static
+ally-linked
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ ./statically-linked
+Usage: ./statically-linked string_to_revert
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ ./statically-linked 245
+Reverted: 542
+
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ gcc -c -fPIC revert_string.c -o revert_string.o
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ gcc -shared revert_string.o -o lidin/librev.so
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ gcc main.o -Llidin -lrev -o shared-linked
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ ./shared-linked
+./shared-linked: error while loading shared libraries: librev.so: cannot open shared object file: No such file or directory
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src/revert_string$ export LD_LIBRARY_PATH=lidin shared-linked; ./shared-linked 234
+Reverted: 432
+
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src$ gcc -c -fPIC tests/tests.c -o tests/tests.o -lcunit
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src$ gcc tests/tests.o -Lrevert_string/lidin -lrev -o tests/tests1 -lcunit
+user@95ea9cbcfab9:/projects/os_lab_2019/lab2/src$ export LD_LIBRARY_PATH=revert_string/lidin ; ./tests/tests1
+
+
+     CUnit - A unit testing framework for C - Version 2.1-3
+     http://cunit.sourceforge.net/
+
+
+Suite: Suite
+  Test: test of RevertString function ...passed
+
+Run Summary:    Type  Total    Ran Passed Failed Inactive
+              suites      1      1    n/a      0        0
+               tests      1      1      1      0        0
+             asserts      4      4      4      0      n/a
+
+Elapsed time =    0.000 seconds

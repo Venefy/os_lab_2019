@@ -1,0 +1,17 @@
+user@58b17ca3247e:/projects/os_lab_2019/lab3/src$ gcc -c find_min_max.c
+user@58b17ca3247e:/projects/os_lab_2019/lab3/src$ gcc -c utils.c
+user@58b17ca3247e:/projects/os_lab_2019/lab3/src$ gcc -c sequential_min_max.c
+user@58b17ca3247e:/projects/os_lab_2019/lab3/src$ gcc sequential_min_max.o find_min_ma
+x.o utils.o -o minmax1
+user@58b17ca3247e:/projects/os_lab_2019/lab3/src$ ./minmax1 3 2 6
+Usage: ./minmax1 seed arraysize
+user@58b17ca3247e:/projects/os_lab_2019/lab3/src$ ./minmax1  2 6
+min: 135137
+max: 1738766719
+user@58b17ca3247e:/projects/os_lab_2019/lab3/src$ gcc -c parallel_min_max.c
+user@58b17ca3247e:/projects/os_lab_2019/lab3/src$ gcc parallel_min_max.o find_min_max.o utils.o -o minmax3
+
+user@58b17ca3247e:/projects/os_lab_2019/lab3/src$ ./minmax3 --seed 13 --array_size 5 --pnum 5 -f
+Min: 733184381
+Max: 1941561279
+Elapsed time: 9.638000ms

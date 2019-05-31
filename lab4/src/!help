@@ -1,0 +1,37 @@
+ser@6c5be5fd3423:/projects$ cd os_lab_2019/lab4/src
+make
+user@6c5be5fd3423:/projects/os_lab_2019/lab4/src$ make
+gcc -o Summa.o -c Summa.c -I.
+gcc -o psum utils.o Summa.o parallel_sum.c -lpthread -I.
+
+user@6c5be5fd3423:/projects/os_lab_2019/lab4/src$ ./parallel_min_max --seed 444 --array_size 10 --pnum 4
+min: 825097573  max: 1290463306
+min: 133438692  max: 1306709666
+min: 1115551831 max: 1467362688
+min: 1298318977 max: 1832579795
+Min: 133438692
+Max: 1832579795
+Elapsed time: 1.004000ms
+user@6c5be5fd3423:/projects/os_lab_2019/lab4/src$
+
+user@6c5be5fd3423:/projects/os_lab_2019/lab4/src$ ./process_memory
+
+Address etext:   400A2D
+Address edata:   601080
+Address end  :   6010B0
+ID main          is at virtual address:   400786
+ID showit        is at virtual address:   4008D7
+ID cptr          is at virtual address:   601078
+ID buffer1       is at virtual address:   601090
+ID i     is at virtual address: EA0302C4
+A demonstration
+ID buffer2       is at virtual address: EA0302A0
+Alocated memory at 1786420
+This message is output by the function showit()
+
+user@6c5be5fd3423:/projects/os_lab_2019/lab4/src$ ./zombie
+^C
+
+user@6c5be5fd3423:/projects/os_lab_2019/lab4/src$ ./psum --threads_num 3 --seed 4 --array_size 5
+Total: -609857949
+Elapsed time: 0.151000ms

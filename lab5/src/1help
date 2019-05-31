@@ -1,0 +1,52 @@
+user@6c5be5fd3423:/projects/os_lab_2019/lab4/src$ cd
+user@6c5be5fd3423:~$ cd /projects/os_lab_2019/lab5
+user@6c5be5fd3423:/projects/os_lab_2019/lab5$ cd src
+user@6c5be5fd3423:/projects/os_lab_2019/lab5/src$ make
+gcc -o mu_no mutex_no.c -lpthread -I.
+gcc -o mu mutex.c -lpthread -I.
+gcc -o fmod factorial_mod.c -lpthread -I.
+
+mu
+doing another thing
+counter = 93
+doing another thing
+counter = 94
+doing another thing
+counter = 95
+doing another thing
+counter = 96
+doing another thing
+counter = 97
+doing another thing
+counter = 98
+doing another thing
+counter = 99
+All done, counter = 100
+
+mu_no
+counter = 50
+doing one thing
+counter = 50
+doing another thing
+counter = 51
+doing one thing
+counter = 51
+doing one thing
+counter = 52
+doing one thing
+counter = 53
+doing one thing
+counter = 54
+All done, counter = 55
+
+user@6c5be5fd3423:/projects/os_lab_2019/lab5/src$ ./fmod --k 2 --pnum 3 --mod 13
+Total: 2
+Elapsed time: 0.244000ms
+user@6c5be5fd3423:/projects/os_lab_2019/lab5/src$
+
+user@6c5be5fd3423:/projects/os_lab_2019/lab5/src$ ./deadlock
+Alice started dinner
+Bob started dinner
+Clark started dinner
+Eugin started dinner
+Denis started dinner

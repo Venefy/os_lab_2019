@@ -1,3 +1,4 @@
+    
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -5,11 +6,13 @@
 #include <sys/wait.h>
 #include <getopt.h>
 
-int main(void)
+int main()
 {
-    pip_t child_pid = fork();
+    //для дочернего процесса fork()=0
+    //для родителя fork()!=0
+    pid_t child_pid = fork();
     if(child_pid == 0){
-        execl("senquential_min_max","senquential_min_max","5","4",NULL);
+        execl("sequential_min_max", "sequential_min_max", "5", "4", NULL);
     }
     else
         exit(0);
